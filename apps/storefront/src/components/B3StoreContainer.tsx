@@ -94,12 +94,38 @@ export default function B3StoreContainer(props: B3StoreContainerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // --- PTHUNDER : Add this after your existing useLayoutEffect ---
+  useEffect(() => {
+    const sendHeightToParent = () => {
+      const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+      const url = window.location.pathname + window.location.hash;
+
+      window.parent.postMessage({ type: 'b2b-resize', height, url }, '*');
+    };
+
+    // Send once after mount + small delay (to allow rendering)
+    const initialTimer = setTimeout(sendHeightToParent, 500);
+
+    // Observe changes in the DOM
+    const observer = new MutationObserver(() => sendHeightToParent());
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also on window resize
+    window.addEventListener('resize', sendHeightToParent);
+
+    return () => {
+      clearTimeout(initialTimer);
+      observer.disconnect();
+      window.removeEventListener('resize', sendHeightToParent);
+    };
+  }, []);
+
   const { children } = props;
 
   return (
-    <>
+    <div id="b3-root" style={{ position: 'relative', minHeight: '75vh' }}>
       {storeEnabled ? children : null}
       <B3PageMask />
-    </>
+    </div>
   );
 }
