@@ -75,6 +75,30 @@ export default function B3Layout({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
+  // --- PTHUNDER : Add this useEffect block inside B3Layout ---
+  useEffect(() => {
+    const sendHeightToParent = () => {
+      const height = document.documentElement.scrollHeight || document.body.scrollHeight;
+      window.parent.postMessage({ type: 'b2b-resize', height }, '*');
+    };
+
+    // Send on load and whenever the route (location.pathname) changes
+    sendHeightToParent();
+
+    // Observe DOM changes to keep height up-to-date
+    const observer = new MutationObserver(() => sendHeightToParent());
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also send on window resize
+    window.addEventListener('resize', sendHeightToParent);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', sendHeightToParent);
+    };
+  }, [location.pathname]);
+
+
   const messageDialogClose = () => {
     dispatch({
       type: 'common',
@@ -109,7 +133,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
           id="app-mainPage-layout"
           sx={{
             display: 'flex',
-            minHeight: '100vh',
+            minHeight: '75vh',
             margin: 'auto',
             width: !isDesktopLimit ? '100%' : 1775,
             minWidth: !isDesktopLimit ? '100%' : 1775,
