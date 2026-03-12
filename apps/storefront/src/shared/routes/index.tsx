@@ -30,7 +30,10 @@ const HomePage = lazy(() => import('@/pages/HomePage'));
 const Invoice = lazy(() => import('@/pages/Invoice'));
 const InvoicePayment = lazy(() => import('@/pages/InvoicePayment'));
 const Login = lazy(() => import('@/pages/Login'));
+const Logout = lazy(() => import('@/pages/Logout'));
 const OrderDetail = lazy(() => import('@/pages/OrderDetail'));
+const OrderLicense = lazy(() => import('@/pages/OrderLicense'));
+const OrderLicenseDetail = lazy(() => import('@/pages/OrderLicenseDetail'));
 const MyOrders = lazy(() => import('@/pages/MyOrders'));
 const PDP = lazy(() => import('@/pages/PDP'));
 const QuickOrder = lazy(() => import('@/pages/QuickOrder'));
@@ -53,6 +56,8 @@ const routesMap: Record<string, LazyExoticComponent<(props: PageProps) => ReactE
   '/shoppingLists': ShoppingLists,
   '/purchased-products': QuickOrder,
   '/orderDetail/:id': OrderDetail,
+  '/order-license': OrderLicense,
+  '/order-license-detail/:id': OrderLicenseDetail,
   '/addresses': AddressList,
   '/shoppingList/:id': ShoppingListDetails,
   '/user-management': UserManagement,
@@ -60,6 +65,7 @@ const routesMap: Record<string, LazyExoticComponent<(props: PageProps) => ReactE
   '/accountSettings': AccountSetting,
   '/quoteDetail/:id': QuoteDetail,
   '/company-hierarchy': CompanyHierarchy,
+  '/logout' : Logout,
 };
 
 function addComponentToRoutes(routes: BuyerPortalRoute[]): RouteItem[] {

@@ -65,6 +65,7 @@
   "global.quoteStatusCode.expired": "Expired",
   "global.navMenu.dashboard": "Dashboard",
   "global.navMenu.orders": "My orders",
+  "global.navMenu.orderLicense": "License Key",
   "global.navMenu.companyOrders": "Company orders",
   "global.navMenu.invoice": "Invoices",
   "global.navMenu.quotes": "Quotes",
