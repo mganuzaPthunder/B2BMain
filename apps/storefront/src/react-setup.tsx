@@ -15,7 +15,7 @@ import B3ThemeProvider from './theme';
 
 import './main.css';
 
-const CONTAINER_ID = 'bundle-container';
+const CONTAINER_ID = 'b2b-portal-root';
 
 let container = document.getElementById(CONTAINER_ID);
 if (!container) {
@@ -26,36 +26,55 @@ if (!container) {
 
 container.className = 'bundle-namespace';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      retry: false,
-      staleTime: 0,
-      refetchInterval: false,
-    },
-  },
-});
+// PTHUNDER : ADD THIS FUNCTION
+function shouldRenderPortal() {
+  const href = window.location.href;
+  const bodyClass = document.body.className;
 
-ReactDOM.createRoot(container).render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <GlobalProvider>
-          <CustomStyleProvider>
-            <LangWrapper>
-              <B3StoreContainer>
-                <DynamicallyVariableProvider>
-                  <B3ThemeProvider>
-                    <App />
-                  </B3ThemeProvider>
-                </DynamicallyVariableProvider>
-              </B3StoreContainer>
-            </LangWrapper>
-          </CustomStyleProvider>
-        </GlobalProvider>
-      </PersistGate>
-    </Provider>
-  </QueryClientProvider>,
-);
+  return (
+    href.includes('/my-account') ||
+    bodyClass.includes('page-my-account') ||
+    window.location.pathname.includes('account.php')
+  );
+}
+
+// Hide or render the portal conditionally
+if (!shouldRenderPortal()) {
+  container.style.display = 'none';
+} else {
+  container.style.display = 'block';
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        retry: false,
+        staleTime: 0,
+        refetchInterval: false,
+      },
+    },
+  });
+
+  ReactDOM.createRoot(container).render(
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <GlobalProvider>
+            <CustomStyleProvider>
+              <LangWrapper>
+                <B3StoreContainer>
+                  <DynamicallyVariableProvider>
+                    <B3ThemeProvider>
+                      <App />
+                    </B3ThemeProvider>
+                  </DynamicallyVariableProvider>
+                </B3StoreContainer>
+              </LangWrapper>
+            </CustomStyleProvider>
+          </GlobalProvider>
+        </PersistGate>
+      </Provider>
+    </QueryClientProvider>
+  );
+}
