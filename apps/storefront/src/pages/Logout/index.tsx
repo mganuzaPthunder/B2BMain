@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logoutSession } from '@/utils/b3logout';
+import { logoutSession } from '@/utils/logoutSession';
 import { PageProps } from '@/pages/PageProps';
 import React from 'react';
 
