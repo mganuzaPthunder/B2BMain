@@ -24,11 +24,11 @@ import {
 interface B3HoverButtonProps {
   isOpen: boolean;
   productQuoteEnabled: boolean;
-  setOpenPage: SetOpenPage;
+  // setOpenPage: SetOpenPage;
 }
 
 export default function B3HoverButton(props: B3HoverButtonProps) {
-  const { isOpen, setOpenPage, productQuoteEnabled } = props;
+  const { isOpen, productQuoteEnabled } = props;
 
   const [showFinishQuote, setShowFinishQuote] = useState<boolean>(false);
   const draftQuoteListLength = useAppSelector(({ quoteInfo }) => quoteInfo.draftQuoteList.length);
