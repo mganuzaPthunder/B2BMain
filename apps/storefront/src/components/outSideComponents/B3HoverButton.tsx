@@ -119,13 +119,7 @@ export default function B3HoverButton(props: B3HoverButtonProps) {
                 ...MUIMediaStyle,
               }}
               onClick={() => {
-                setOpenPage({
-                  isOpen: true,
-                  openUrl: '/quoteDraft',
-                  params: {
-                    quoteBtn: 'open',
-                  },
-                });
+                window.location.href = '/my-account/#/quoteDraft';
               }}
               variant="contained"
             >
