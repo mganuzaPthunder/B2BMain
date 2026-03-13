@@ -12,10 +12,10 @@ import B3Dialog from '../B3Dialog';
 import CompanyCredit from '../CompanyCredit';
 
 import B3CloseAppButton from './B3CloseAppButton';
-import B3Logo from './B3Logo';
-import B3MainHeader from './B3MainHeader';
+// import B3Logo from './B3Logo';
+// import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
-import B3Nav from './B3Nav';
+// import B3Nav from './B3Nav';
 
 const SPECIAL_PATH_TEXTS = {
   '/purchased-products': 'global.purchasedProducts.title',
@@ -25,7 +25,7 @@ const SPECIAL_PATH_TEXTS = {
 
 export default function B3Layout({ children }: { children: ReactNode }) {
   const [isMobile] = useMobile();
-  const isDesktopLimit = false;
+  // const isDesktopLimit = false;
 
   const location = useLocation();
 
