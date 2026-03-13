@@ -65,12 +65,18 @@ export default function OrderLicenseCard({ item, goToDetail }: OrderItemCardProp
           variant="h6"
           sx={{ mt: theme.spacing(1.5), mb: theme.spacing(2.5), minHeight: '1.43em' }}
         >
-          {currencyFormat(item.totalIncTax)}
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(Number(item.totalIncTax))}
         </Typography>
+
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography sx={{ mr: theme.spacing(2) }}>{getName(item)}</Typography>
-          <Typography>{String(displayFormat(item.createdAt))}</Typography>
+          <Typography>
+            {new Date(item.createdAt).toLocaleDateString()}
+          </Typography>
         </Box>
       </CardContent>
     </Card>
