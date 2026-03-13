@@ -4,7 +4,6 @@ import {
   getQuoteValidationErrorMessage,
   QUOTE_VALIDATION_MESSAGE_CONTEXTS,
 } from '@/pages/quote/shared/getQuoteValidationErrorMessage';
-import { type SetOpenPage } from '@/pages/SetOpenPage';
 import { searchProducts } from '@/shared/service/b2b';
 import { GetCart, getCart } from '@/shared/service/bc/graphql/cart';
 import { store } from '@/store';
@@ -129,7 +128,6 @@ const getCartProducts = (lineItems: LineItemsProps) =>
 
 const addProductsToDraftQuote = async (
   products: LineItem[],
-  setOpenPage: SetOpenPage,
   b3Lang: LangFormatFunction,
   cartId?: string,
 ) => {
@@ -181,7 +179,7 @@ const addProductsToDraftQuote = async (
   }
 };
 
-const addProductsFromCartToQuote = (setOpenPage: SetOpenPage, b3Lang: LangFormatFunction) => {
+const addProductsFromCartToQuote = (b3Lang: LangFormatFunction) => {
   const addToQuote = async (cartInfoWithOptions: GetCart) => {
     try {
       if (!cartInfoWithOptions.data.site.cart) {
@@ -205,7 +203,7 @@ const addProductsFromCartToQuote = (setOpenPage: SetOpenPage, b3Lang: LangFormat
       const newCartProductsList = cartProductsList.filter(
         (product: PhysicalItemProps) => !product.parentEntityId,
       );
-      await addProductsToDraftQuote(newCartProductsList, setOpenPage, b3Lang, entityId);
+      await addProductsToDraftQuote(newCartProductsList, b3Lang, entityId);
     } catch (e) {
       b2bLogger.error(e);
     } finally {
@@ -224,7 +222,6 @@ const addProductsFromCartToQuote = (setOpenPage: SetOpenPage, b3Lang: LangFormat
 };
 
 const addProductFromProductPageToQuote = (
-  setOpenPage: SetOpenPage,
   isEnableProduct: boolean,
   b3Lang: LangFormatFunction,
   isBackorderEnabled: boolean,

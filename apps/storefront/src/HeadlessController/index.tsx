@@ -163,7 +163,7 @@ export default function HeadlessController({ setOpenPage }: HeadlessControllerPr
               sku: await getSku(item),
             };
 
-            return addProductsToDraftQuote([productWithSku], setOpenPage, b3Lang);
+            return addProductsToDraftQuote([productWithSku], b3Lang);
           },
           addProductsFromCart: addToQuoteFromCookie,
           addProductsFromCartId: addToQuoteFromCart,
@@ -175,7 +175,7 @@ export default function HeadlessController({ setOpenPage }: HeadlessControllerPr
               })),
             );
 
-            return addProductsToDraftQuote(products, setOpenPage, b3Lang);
+            return addProductsToDraftQuote(products, b3Lang);
           },
           getQuoteConfigs: () => quoteConfig,
           getCurrent: () => ({ productList }),
