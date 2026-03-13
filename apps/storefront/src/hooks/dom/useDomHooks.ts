@@ -46,7 +46,6 @@ const useDomHooks = ({ setOpenPage, isOpen }: MutationObserverProps) => {
     customerId,
   });
   useCartToQuote({
-    setOpenPage,
     cartQuoteEnabled,
   });
 
