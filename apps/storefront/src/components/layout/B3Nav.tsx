@@ -106,6 +106,10 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
     }
   };
 
+  const handleLogout = () => {
+    window.location.href = '/login.php?action=logout';
+  };
+
   useEffect(() => {
     let isHasSubsidiariesCompanyPermission = false;
     const { hash } = window.location;
@@ -249,6 +253,22 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
           </ListItem>
         );
       })}
+
+      {/* Logout */}
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={handleLogout}
+          sx={{
+            color: 'error.main',
+            '&:hover': {
+              bgcolor: b3HexToRgb('#ff0000', 0.08),
+              borderRadius: '4px',
+            },
+          }}
+        >
+          <ListItemText primary="Logout" />
+        </ListItemButton>
+      </ListItem>
     </List>
   );
 }
