@@ -15,7 +15,7 @@ import B3CloseAppButton from './B3CloseAppButton';
 // import B3Logo from './B3Logo';
 // import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
-// import B3Nav from './B3Nav';
+import B3Nav from './B3Nav';
 
 const SPECIAL_PATH_TEXTS = {
   '/purchased-products': 'global.purchasedProducts.title',
@@ -125,77 +125,82 @@ export default function B3Layout({ children }: { children: ReactNode }) {
 
   return (
     <Box>
-      {isMobile ? (
-        <B3MobileLayout title={title}>{children}</B3MobileLayout>
-      ) : (
-        <Box
-          id="app-mainPage-layout"
-          sx={{
-            display: 'flex',
-            minHeight: '75vh',
-            margin: 'auto',
-            width: '100%',
-            minWidth: '100%',
-            maxWidth: '100%',
-            flexDirection: 'row',
-            p: '32px 63px 70px 63px',
-          }}
-        >
-          <B3CloseAppButton />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '200px',
-              displayPrint: 'none',
-            }}
-          >
-            {/* B3Logo and B3Nav removed */}
-          </Box>
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              maxWidth: '1450px',
-              width: '100%',
-              p: '0 0px 0px 50px',
-              ...overflowStyle,
-            }}
-          >
-            {/* B3MainHeader removed */}
-            <CompanyCredit />
-            <Box
-              component="main"
-              sx={{
-                mt: !isMobile && !title ? '24px' : '0',
-              }}
-            >
-              {children}
-            </Box>
-          </Box>
-        </Box>
-      )}
-      <B3Dialog
-        isOpen={globalMessageDialog.open}
-        title={globalMessageDialog.title}
-        leftSizeBtn={globalMessageDialog.cancelText}
-        rightSizeBtn={globalMessageDialog.saveText}
-        handleLeftClick={globalMessageDialog.cancelFn || messageDialogClose}
-        handRightClick={globalMessageDialog.saveFn}
-        showRightBtn={!!globalMessageDialog.saveText}
+  {isMobile ? (
+    <B3MobileLayout title={title}>{children}</B3MobileLayout>
+  ) : (
+    <Box
+      id="app-mainPage-layout"
+      sx={{
+        display: 'flex',
+        minHeight: '75vh',
+        margin: 'auto',
+        width: '100%',
+        minWidth: '100%',
+        maxWidth: '100%',
+        flexDirection: 'row',
+        p: '32px 63px 70px 63px',
+      }}
+    >
+      <B3CloseAppButton />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '200px',
+          displayPrint: 'none',
+        }}
       >
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: isMobile ? 'center' : 'start',
-            width: isMobile ? '100%' : '450px',
-            height: '100%',
+            pt: '24px',
           }}
         >
-          {globalMessageDialog.message}
+          <B3Nav />
         </Box>
-      </B3Dialog>
+      </Box>
+      <Box
+        sx={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: '1450px',
+          width: '100%',
+          p: '0 0px 0px 50px',
+          ...overflowStyle,
+        }}
+      >
+        <CompanyCredit />
+        <Box
+          component="main"
+          sx={{
+            mt: !isMobile && !title ? '24px' : '0',
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
     </Box>
+  )}
+  <B3Dialog
+    isOpen={globalMessageDialog.open}
+    title={globalMessageDialog.title}
+    leftSizeBtn={globalMessageDialog.cancelText}
+    rightSizeBtn={globalMessageDialog.saveText}
+    handleLeftClick={globalMessageDialog.cancelFn || messageDialogClose}
+    handRightClick={globalMessageDialog.saveFn}
+    showRightBtn={!!globalMessageDialog.saveText}
+  >
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: isMobile ? 'center' : 'start',
+        width: isMobile ? '100%' : '450px',
+        height: '100%',
+      }}
+    >
+      {globalMessageDialog.message}
+    </Box>
+  </B3Dialog>
+</Box>
   );
 }
