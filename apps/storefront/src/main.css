@@ -1,3 +1,33 @@
+/* Inline rendering adjustments for BigCommerce integration */
+
+#bundle-container,
+#b2b-portal-root {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  display: block !important;
+  z-index: 1;
+}
+
+
+.bundle-namespace {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: auto;
+}
+
+.bundle-namespace #body-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(254, 249, 245, 0.6);
+  z-index: 1;
+}
 .bundle-namespace .bundle-app > iframe {
   width: 0;
   height: 0;
@@ -9,10 +39,13 @@
 .bundle-namespace .bundle-app > iframe.active-frame {
   width: 100%;
   height: 100%;
-  position: fixed;
-  overscroll-behavior: contain;
-  z-index: var(--z-index-IFRAME);
-  pointer-events: pointer;
+  position: absolute; /* ✅ from fixed to absolute */
+}
+
+#bundle-container,
+#b2b-portal-root,
+.bundle-namespace {
+  overflow: visible !important;
 }
 
 .bundle-namespace iframe {
