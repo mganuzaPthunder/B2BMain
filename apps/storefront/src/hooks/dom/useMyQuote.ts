@@ -48,13 +48,12 @@ const clearNoPurchasableQuoteDom = () => {
 type DispatchProps = Dispatch<SetStateAction<OpenPageState>>;
 
 interface UseMyQuoteProps {
-  setOpenPage: DispatchProps;
   productQuoteEnabled: boolean;
   role: number | string;
   customerId?: number | string;
 }
 
-export const useMyQuote = ({ setOpenPage, productQuoteEnabled, role }: UseMyQuoteProps) => {
+export const useMyQuote = ({ productQuoteEnabled, role }: UseMyQuoteProps) => {
   const b3Lang = useB3Lang();
   const dispatch = useAppDispatch();
   const isBackorderEnabled = useIsBackorderEnabled();
@@ -86,7 +85,6 @@ export const useMyQuote = ({ setOpenPage, productQuoteEnabled, role }: UseMyQuot
   }, [b2bId, role, quoteDraftUserId]);
 
   const { addToQuote, addLoading } = addProductFromProductPageToQuote(
-    setOpenPage,
     isEnableProduct,
     b3Lang,
     isBackorderEnabled,

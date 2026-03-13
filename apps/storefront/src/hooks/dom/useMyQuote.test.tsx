@@ -65,7 +65,6 @@ describe('when NP&OOS setting is enabled', () => {
     renderHookWithProviders(
       () =>
         useMyQuote({
-          setOpenPage: () => {},
           productQuoteEnabled: true,
           role: 1,
           customerId: 1,
@@ -111,7 +110,6 @@ describe('when NP&OOS setting is enabled', () => {
     renderHookWithProviders(
       () =>
         useMyQuote({
-          setOpenPage: () => {},
           productQuoteEnabled: true,
           role: 1,
           customerId: 1,
@@ -142,7 +140,6 @@ describe('when NP&OOS setting is disabled', () => {
     renderHookWithProviders(
       () =>
         useMyQuote({
-          setOpenPage: () => {},
           productQuoteEnabled: true,
           role: 1,
           customerId: 1,
@@ -165,7 +162,6 @@ describe('when NP&OOS setting is disabled', () => {
     renderHookWithProviders(
       () =>
         useMyQuote({
-          setOpenPage: () => {},
           productQuoteEnabled: true,
           role: 1,
           customerId: 1,

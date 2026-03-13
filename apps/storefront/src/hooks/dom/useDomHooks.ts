@@ -41,7 +41,6 @@ const useDomHooks = ({ setOpenPage, isOpen }: MutationObserverProps) => {
   useRegisteredbctob2b(setOpenPage);
 
   useMyQuote({
-    setOpenPage,
     productQuoteEnabled,
     role,
     customerId,

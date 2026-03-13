@@ -93,7 +93,6 @@ export default function HeadlessController({ setOpenPage }: HeadlessControllerPr
     state: { addQuoteBtn, shoppingListBtn, addToAllQuoteBtn },
   } = useContext(CustomStyleContext);
   const { addToQuoteFromCart, addToQuoteFromCookie } = addProductsFromCartToQuote(
-    setOpenPage,
     b3Lang,
   );
 

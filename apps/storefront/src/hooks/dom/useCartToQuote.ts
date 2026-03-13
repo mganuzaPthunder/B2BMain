@@ -35,7 +35,6 @@ interface IsShowBlockPendingAccountOrderCreationTipProps {
 const useCartToQuote = ({ setOpenPage, cartQuoteEnabled }: MutationObserverProps) => {
   const b3Lang = useB3Lang();
   const { addToQuoteFromCookie: addToQuote, addLoading } = addProductsFromCartToQuote(
-    setOpenPage,
     b3Lang,
   );
 
