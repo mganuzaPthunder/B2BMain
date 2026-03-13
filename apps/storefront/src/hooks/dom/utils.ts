@@ -99,14 +99,8 @@ const removeLoading = () => {
   if (b2bLoading) removeElement(b2bLoading);
 };
 
-const gotoQuoteDraft = (setOpenPage: SetOpenPage) => {
-  setOpenPage({
-    isOpen: true,
-    openUrl: '/quoteDraft',
-    params: {
-      quoteBtn: 'add',
-    },
-  });
+const gotoQuoteDraft = () => {
+  window.location.href = '/my-account/#/quoteDraft';
 };
 
 const getCartProducts = (lineItems: LineItemsProps) =>
@@ -180,7 +174,7 @@ const addProductsToDraftQuote = async (
 
     globalSnackbar.success(b3Lang('quoteDraft.notification.productPlural'), {
       action: {
-        onClick: () => gotoQuoteDraft(setOpenPage),
+        onClick: () => gotoQuoteDraft(),
         label: b3Lang('quoteDraft.notification.openQuote'),
       },
     });
@@ -356,16 +350,16 @@ const addProductFromProductPageToQuote = (
       const isSuccess = validProductQty(newProducts);
       if (quoteListitem && isSuccess) {
         await addQuoteDraftProduce(quoteListitem, qty, optionList || []);
-        globalSnackbar.success(b3Lang('global.notification.addProductSingular'), {
+        globalSnackbar.success(b3Lang('quoteDraft.notification.productPlural'), {
           action: {
-            onClick: () => gotoQuoteDraft(setOpenPage),
+            onClick: () => gotoQuoteDraft(),
             label: b3Lang('quoteDraft.notification.openQuote'),
           },
         });
       } else if (!isSuccess) {
-        globalSnackbar.error(b3Lang('global.notification.maximumPurchaseExceed'), {
+        globalSnackbar.success(b3Lang('quoteDraft.notification.productPlural'), {
           action: {
-            onClick: () => gotoQuoteDraft(setOpenPage),
+            onClick: () => gotoQuoteDraft(),
             label: b3Lang('quoteDraft.notification.openQuote'),
           },
         });
