@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "tsc --noEmit",
-    // "build": "vite build",
     "build": "tsc -p tsconfig.json && vite build",
     "postbuild": "./generate-translations-csv.ts",
     "lint": "yarn lint:dependencies && yarn lint:eslint && yarn lint:knip",
