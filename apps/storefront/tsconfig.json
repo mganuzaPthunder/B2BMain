@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
@@ -20,5 +21,6 @@
       "@/lib/*": ["src/lib/*"],
       "@/utils/*": ["src/utils/*"]
     }
-  }
+  },
+  "include": ["src", "tests"]
 }
