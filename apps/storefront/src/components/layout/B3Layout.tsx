@@ -132,7 +132,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
           id="app-mainPage-layout"
           sx={{
             display: 'flex',
-            minHeight: '100vh',
+            minHeight: '75vh',
             margin: 'auto',
             width: !isDesktopLimit ? '100%' : 1775,
             minWidth: !isDesktopLimit ? '100%' : 1775,

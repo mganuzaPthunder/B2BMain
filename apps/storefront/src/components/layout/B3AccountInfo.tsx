@@ -40,10 +40,12 @@ export default function B3AccountInfo({ closeSidebar }: B3AccountInfoProps) {
     if (!item) return;
 
     if (item.key === 'logout') {
-      navigate('/login?loginFlag=loggedOutLogin');
+      // 👇 Redirect to your new Logout page route
+      navigate('/logout');
     } else if (item.type === 'path' && item.key) {
       navigate(item.key);
     }
+    
     if (closeSidebar) {
       closeSidebar(false);
     }
