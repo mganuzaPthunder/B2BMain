@@ -150,7 +150,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
               displayPrint: 'none',
             }}
           >
-            <B3Logo />
+            {/*<B3Logo />
             <Box
               sx={{
                 pt: '24px',
@@ -158,7 +158,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
             >
               <B3Nav />
             </Box>
-          </Box>
+          </Box>*/}
 
           <Box
             sx={{
@@ -173,14 +173,14 @@ export default function B3Layout({ children }: { children: ReactNode }) {
           >
             <B3MainHeader title={title} />
             <CompanyCredit />
-            <Box
+            {/*<Box
               component="main"
               sx={{
                 mt: !isMobile && !title ? '24px' : '0',
               }}
             >
               {children}
-            </Box>
+            </Box>*/}
           </Box>
         </Box>
       )}
