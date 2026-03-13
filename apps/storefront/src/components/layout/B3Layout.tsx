@@ -1,6 +1,6 @@
 import { ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { useMobile } from '@/hooks/useMobile';
 import { useB3Lang } from '@/lib/lang';
@@ -11,9 +11,6 @@ import { useAppSelector } from '@/store';
 import B3Dialog from '../B3Dialog';
 import CompanyCredit from '../CompanyCredit';
 
-// import B3CloseAppButton from './B3CloseAppButton';
-// import B3Logo from './B3Logo';
-// import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
 import B3Nav from './B3Nav';
 
@@ -25,7 +22,6 @@ const SPECIAL_PATH_TEXTS = {
 
 export default function B3Layout({ children }: { children: ReactNode }) {
   const [isMobile] = useMobile();
-  // const isDesktopLimit = false;
 
   const location = useLocation();
 
@@ -75,21 +71,17 @@ export default function B3Layout({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-   // --- PTHUNDER : Add this useEffect block inside B3Layout ---
   useEffect(() => {
     const sendHeightToParent = () => {
       const height = document.documentElement.scrollHeight || document.body.scrollHeight;
       window.parent.postMessage({ type: 'b2b-resize', height }, '*');
     };
 
-    // Send on load and whenever the route (location.pathname) changes
     sendHeightToParent();
 
-    // Observe DOM changes to keep height up-to-date
     const observer = new MutationObserver(() => sendHeightToParent());
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Also send on window resize
     window.addEventListener('resize', sendHeightToParent);
 
     return () => {
@@ -125,81 +117,92 @@ export default function B3Layout({ children }: { children: ReactNode }) {
 
   return (
     <Box>
-  {isMobile ? (
-    <B3MobileLayout title={title}>{children}</B3MobileLayout>
-  ) : (
-    <Box
-      id="app-mainPage-layout"
-      sx={{
-        display: 'flex',
-        minHeight: '75vh',
-        margin: 'auto',
-        width: '100%',
-        minWidth: '100%',
-        maxWidth: '100%',
-        flexDirection: 'row',
-        p: '32px 63px 70px 63px',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '200px',
-          displayPrint: 'none',
-        }}
+      {isMobile ? (
+        <B3MobileLayout title={title}>{children}</B3MobileLayout>
+      ) : (
+        <Box
+          id="app-mainPage-layout"
+          sx={{
+            display: 'flex',
+            minHeight: '75vh',
+            margin: 'auto',
+            width: '100%',
+            minWidth: '100%',
+            maxWidth: '100%',
+            flexDirection: 'row',
+            p: '32px 63px 70px 63px',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: '200px',
+              displayPrint: 'none',
+            }}
+          >
+            <Box
+              sx={{
+                pt: '24px',
+              }}
+            >
+              <B3Nav />
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              maxWidth: '1450px',
+              width: '100%',
+              p: '0 0px 0px 50px',
+              ...overflowStyle,
+            }}
+          >
+            {title && (
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: '24px',
+                  fontWeight: 600,
+                }}
+              >
+                {title}
+              </Typography>
+            )}
+            <CompanyCredit />
+            <Box
+              component="main"
+              sx={{
+                mt: !isMobile && !title ? '24px' : '0',
+              }}
+            >
+              {children}
+            </Box>
+          </Box>
+        </Box>
+      )}
+      <B3Dialog
+        isOpen={globalMessageDialog.open}
+        title={globalMessageDialog.title}
+        leftSizeBtn={globalMessageDialog.cancelText}
+        rightSizeBtn={globalMessageDialog.saveText}
+        handleLeftClick={globalMessageDialog.cancelFn || messageDialogClose}
+        handRightClick={globalMessageDialog.saveFn}
+        showRightBtn={!!globalMessageDialog.saveText}
       >
         <Box
           sx={{
-            pt: '24px',
+            display: 'flex',
+            justifyContent: isMobile ? 'center' : 'start',
+            width: isMobile ? '100%' : '450px',
+            height: '100%',
           }}
         >
-          <B3Nav />
+          {globalMessageDialog.message}
         </Box>
-      </Box>
-      <Box
-        sx={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          maxWidth: '1450px',
-          width: '100%',
-          p: '0 0px 0px 50px',
-          ...overflowStyle,
-        }}
-      >
-        <CompanyCredit />
-        <Box
-          component="main"
-          sx={{
-            mt: !isMobile && !title ? '24px' : '0',
-          }}
-        >
-          {children}
-        </Box>
-      </Box>
+      </B3Dialog>
     </Box>
-  )}
-  <B3Dialog
-    isOpen={globalMessageDialog.open}
-    title={globalMessageDialog.title}
-    leftSizeBtn={globalMessageDialog.cancelText}
-    rightSizeBtn={globalMessageDialog.saveText}
-    handleLeftClick={globalMessageDialog.cancelFn || messageDialogClose}
-    handRightClick={globalMessageDialog.saveFn}
-    showRightBtn={!!globalMessageDialog.saveText}
-  >
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: isMobile ? 'center' : 'start',
-        width: isMobile ? '100%' : '450px',
-        height: '100%',
-      }}
-    >
-      {globalMessageDialog.message}
-    </Box>
-  </B3Dialog>
-</Box>
   );
 }
