@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 import { isB2BUserSelector, useAppSelector } from '@/store';
-
 import OrderStatus from '@/pages/order/components/OrderStatus';
 
 interface ListItem {
