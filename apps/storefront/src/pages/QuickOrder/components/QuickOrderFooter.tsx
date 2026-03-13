@@ -414,7 +414,7 @@ function QuickOrderFooter(props: QuickOrderFooterProps) {
             action: {
               label: b3Lang('purchasedProducts.footer.viewQuote'),
               onClick: () => {
-                navigate('/quoteDraft');
+                window.location.href = '/my-account/#/quoteDraft';
               },
             },
           });
