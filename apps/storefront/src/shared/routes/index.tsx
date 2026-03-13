@@ -32,6 +32,8 @@ const InvoicePayment = lazy(() => import('@/pages/InvoicePayment'));
 const Login = lazy(() => import('@/pages/Login'));
 const OrderDetail = lazy(() => import('@/pages/OrderDetail'));
 const MyOrders = lazy(() => import('@/pages/MyOrders'));
+const OrderLicense = lazy(() => import('@/pages/OrderLicense'));
+const OrderLicenseDetail = lazy(() => import('@/pages/OrderLicenseDetail'));
 const PDP = lazy(() => import('@/pages/PDP'));
 const QuickOrder = lazy(() => import('@/pages/QuickOrder'));
 const QuoteDetail = lazy(() => import('@/pages/QuoteDetail'));
@@ -53,6 +55,8 @@ const routesMap: Record<string, LazyExoticComponent<(props: PageProps) => ReactE
   '/shoppingLists': ShoppingLists,
   '/purchased-products': QuickOrder,
   '/orderDetail/:id': OrderDetail,
+  '/order-license': OrderLicense,
+  '/order-license-detail/:id': OrderLicenseDetail,
   '/addresses': AddressList,
   '/shoppingList/:id': ShoppingListDetails,
   '/user-management': UserManagement,
