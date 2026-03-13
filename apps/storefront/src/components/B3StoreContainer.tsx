@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useLayoutEffect } from 'react';
+import { ReactNode, useContext, useLayoutEffect, useEffect } from 'react';
 
 import { Z_INDEX } from '@/constants';
 import { GlobalContext } from '@/shared/global';
