@@ -21,9 +21,7 @@ import useStorageState from '../useStorageState';
 
 import { addProductsFromCartToQuote } from './utils';
 
-type DispatchProps = Dispatch<SetStateAction<OpenPageState>>;
 interface MutationObserverProps {
-  setOpenPage: DispatchProps;
   cartQuoteEnabled: boolean;
 }
 
@@ -32,7 +30,7 @@ interface IsShowBlockPendingAccountOrderCreationTipProps {
   checkoutTip: number;
 }
 
-const useCartToQuote = ({ setOpenPage, cartQuoteEnabled }: MutationObserverProps) => {
+const useCartToQuote = ({ cartQuoteEnabled }: MutationObserverProps) => {
   const b3Lang = useB3Lang();
   const { addToQuoteFromCookie: addToQuote, addLoading } = addProductsFromCartToQuote(
     b3Lang,

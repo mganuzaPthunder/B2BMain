@@ -45,7 +45,6 @@ const clearNoPurchasableQuoteDom = () => {
   });
 };
 
-type DispatchProps = Dispatch<SetStateAction<OpenPageState>>;
 
 interface UseMyQuoteProps {
   productQuoteEnabled: boolean;
