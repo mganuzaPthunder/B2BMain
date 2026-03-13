@@ -422,11 +422,11 @@ function QuickOrderFooter(props: QuickOrderFooterProps) {
       } else {
         snackbar.error(b3Lang('purchasedProducts.footer.productsLimit'), {
           action: {
-            label: b3Lang('purchasedProducts.footer.viewQuote'),
-            onClick: () => {
-              navigate('/quoteDraft');
+              label: b3Lang('purchasedProducts.footer.viewQuote'),
+              onClick: () => {
+                window.location.href = '/my-account/#/quoteDraft';
+              },
             },
-          },
         });
       }
     } catch (e) {
