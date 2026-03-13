@@ -134,9 +134,9 @@ export default function B3Layout({ children }: { children: ReactNode }) {
             display: 'flex',
             minHeight: '75vh',
             margin: 'auto',
-            width: !isDesktopLimit ? '100%' : 1775,
-            minWidth: !isDesktopLimit ? '100%' : 1775,
-            maxWidth: !isDesktopLimit ? '100%' : 1775,
+            width: '100%',
+            minWidth: '100%',
+            maxWidth: '100%',
             flexDirection: 'row',
             p: '32px 63px 70px 63px',
           }}
@@ -150,16 +150,8 @@ export default function B3Layout({ children }: { children: ReactNode }) {
               displayPrint: 'none',
             }}
           >
-            {/*<B3Logo />
-            <Box
-              sx={{
-                pt: '24px',
-              }}
-            >
-              <B3Nav />
-            </Box>
-          </Box>*/}
-
+            {/* B3Logo and B3Nav removed */}
+          </Box>
           <Box
             sx={{
               flex: 1,
@@ -171,20 +163,19 @@ export default function B3Layout({ children }: { children: ReactNode }) {
               ...overflowStyle,
             }}
           >
-            <B3MainHeader title={title} />
+            {/* B3MainHeader removed */}
             <CompanyCredit />
-            {/*<Box
+            <Box
               component="main"
               sx={{
                 mt: !isMobile && !title ? '24px' : '0',
               }}
             >
               {children}
-            </Box>*/}
+            </Box>
           </Box>
         </Box>
       )}
-
       <B3Dialog
         isOpen={globalMessageDialog.open}
         title={globalMessageDialog.title}
