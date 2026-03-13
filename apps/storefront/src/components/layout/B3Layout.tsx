@@ -25,7 +25,7 @@ const SPECIAL_PATH_TEXTS = {
 
 export default function B3Layout({ children }: { children: ReactNode }) {
   const [isMobile] = useMobile();
-  const isDesktopLimit = useMediaQuery('(min-width:1775px)');
+  const isDesktopLimit = false;
 
   const location = useLocation();
 
