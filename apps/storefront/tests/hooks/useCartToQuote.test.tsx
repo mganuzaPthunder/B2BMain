@@ -43,6 +43,7 @@ describe('when the user is on checkout page and the company status is rejected',
     };
 
     renderHookWithProviders(
+      () => useCartToQuote({ cartQuoteEnabled: true }),
       { preloadedState },
     );
 
@@ -112,6 +113,7 @@ describe('when the user is NOT on checkout page and the company status is reject
     });
 
     renderHookWithProviders(
+      () => useCartToQuote({ cartQuoteEnabled: true }),
       { preloadedState },
     );
 
@@ -180,6 +182,7 @@ describe('when the user is on checkout page and the company status is Approved',
     });
 
     renderHookWithProviders(
+      () => useCartToQuote({ cartQuoteEnabled: true }),
       { preloadedState },
     );
 
@@ -248,6 +251,7 @@ describe('when the user is on checkout page and the company status is PENDING', 
     });
 
     renderHookWithProviders(
+      () => useCartToQuote({ cartQuoteEnabled: true }),
       { preloadedState },
     );
 
