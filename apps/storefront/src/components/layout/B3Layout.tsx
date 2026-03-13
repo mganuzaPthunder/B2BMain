@@ -11,7 +11,7 @@ import { useAppSelector } from '@/store';
 import B3Dialog from '../B3Dialog';
 import CompanyCredit from '../CompanyCredit';
 
-import B3CloseAppButton from './B3CloseAppButton';
+// import B3CloseAppButton from './B3CloseAppButton';
 // import B3Logo from './B3Logo';
 // import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
@@ -141,7 +141,6 @@ export default function B3Layout({ children }: { children: ReactNode }) {
         p: '32px 63px 70px 63px',
       }}
     >
-      <B3CloseAppButton />
       <Box
         sx={{
           display: 'flex',
