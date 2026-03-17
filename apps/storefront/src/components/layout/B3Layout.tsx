@@ -116,7 +116,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
   }, [location]);
 
   return (
-    <Box>
+    <Box sx={{ minHeight: '75vh' }}>
       {isMobile ? (
         <B3MobileLayout title={title}>{children}</B3MobileLayout>
       ) : (
