@@ -107,7 +107,7 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
   };
 
   const handleLogout = () => {
-    window.location.href = '/login.php?action=logout';
+    window.location.href = '/login.php?action=logout&return_url=/my-account/';
   };
 
   useEffect(() => {
