@@ -1342,10 +1342,10 @@
     eslint-plugin-testing-library "^7.1.1"
     prettier "^3.5.3"
 
-"@bigcommerce/eslint-plugin@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@bigcommerce/eslint-plugin/-/eslint-plugin-1.4.0.tgz#4ac43a81875cd19a507580d36ba9de27e4ab81c2"
-  integrity sha512-aNmrOiQpre5z5yzbEktdugYi1goaVWt62SfcmvXhKoBAdHIxIfjNhWub+dUDg+6xTQZjRcd/AOBTV1Mi3SxriQ==
+"@bigcommerce/eslint-plugin@^1.4.0", "@bigcommerce/eslint-plugin@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@bigcommerce/eslint-plugin/-/eslint-plugin-1.4.1.tgz#36bada628ff2fb9c5eeaf5299bb0bc407bab732d"
+  integrity sha512-bnyTV7koYKgDyW+3oIGGYP7yD1KqLMkMKhnktOBylz2d4kY/pLmdVtpvVvMSwnwr3JdPtAqR6/yVGT7isKgFbA==
   dependencies:
     tsutils "^3.21.0"
 
